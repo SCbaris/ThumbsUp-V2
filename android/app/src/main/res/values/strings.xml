@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ThumbsUp</string>
     <string name="facebook_app_id">1269957733202681</string>
+    <string name="fb_login_protocol_scheme">fb1269957733202681</string>
 </resources>
