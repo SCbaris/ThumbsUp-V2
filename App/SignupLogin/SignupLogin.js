@@ -3,8 +3,6 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 
-
-
 export default class SignupLogin extends React.Component {
     
     static navigationOptions = ({ navigation }) => {
@@ -25,8 +23,9 @@ export default class SignupLogin extends React.Component {
 
 	}
 
-	onContinueButtonTwoPressed = () => {
-        this.props.navigation.navigate('CompanySignupCompletion');
+	onContinueButtonTwoPressed = () => {	
+		
+		//this.props.navigation.navigate('CompanySignupCompletion');
 	}
 
 	onContinueButtonPressed = () => {
