@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1023135590992",
+    "firebase_url": "https://thumbsup-8e6ac.firebaseio.com",
+    "project_id": "thumbsup-8e6ac",
+    "storage_bucket": "thumbsup-8e6ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023135590992:android:7bf8fb4121e1512897ff55",
+        "android_client_info": {
+          "package_name": "com.thumbsup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1023135590992-dasc82g7oebjne1jsok2a1ohcmgc1jmg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB10jufPNbeV4De7o5ZNk1LBt9RVpEzEyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1023135590992-dasc82g7oebjne1jsok2a1ohcmgc1jmg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
