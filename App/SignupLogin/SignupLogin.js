@@ -8,7 +8,15 @@ import { LoginManager, AccessToken } from 'react-native-fbsdk';
 async function onFacebookButtonPress() {
 	// Attempt login with permissions
 	const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
-  
+	
+	
+	
+	console.log(result)
+	// {"declinedPermissions": [], "grantedPermissions": ["public_profile", "email"], "isCancelled": false}
+
+	console.log(data)
+	//undefined
+
 	if (result.isCancelled) {
 	  throw 'User cancelled the login process';
 	}
@@ -52,16 +60,19 @@ export default class SignupLogin extends React.Component {
 	}
 
 	onContinueButtonTwoPressed = () => {
-		onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))
+		onFacebookButtonPress().then(() =>{
+		 	console.log('Signed in with Facebook!')
+			this.props.navigation.navigate('CompanySignupCompletion');
+		})
 	}
-		
-		
-		//this.props.navigation.navigate('CompanySignupCompletion');
 
 	onContinueButtonPressed = () => {
-        this.props.navigation.navigate('UserSignupCompletion');
+		onFacebookButtonPress().then(() =>{
+			console.log('Signed in with Facebook!')
+			this.props.navigation.navigate('UserSignupCompletion');
+	   	})
+        
 	}
-
 
 	render() {
         
