@@ -1,13 +1,24 @@
-//
-//  ImageUplaod
-//  ThumbsUp UI_Ux
-//
-//  Created by .
-//  Copyright © 2018 . All rights reserved.
-//
 
 import React from "react"
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import ImagePicker from 'react-native-image-picker';
+
+const options = {
+	title: 'Select Picture',
+	customButtons: [{ name: 'fb', title: 'Choose Photo from Gallery' }],
+	storageOptions: {
+	  skipBackup: true,
+	  path: 'images',
+	},
+  };
+  
+  /**
+   * The first arg is the options object for customization (it can also be null or omitted for default options),
+   * The second arg is the callback which sends object: response (more info in the API Reference)
+   */
+
+
+
 
 
 export default class ImageUplaod extends React.Component {
@@ -24,7 +35,48 @@ export default class ImageUplaod extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {
+			avatarSource :{},
+			imageOne : "./../../assets/images/upload.png",
+			imageTwo :"./../../assets/images/upload.png",
+			imageThree :"./../../assets/images/upload.png",
+			imagefour :"./../../assets/images/upload.png"
+
+		}
 	}
+
+	ImageTaker(pictureNumber) {
+		ImagePicker.showImagePicker(options, (response) => {
+			//console.log('Response = ', response);
+		  
+			if (response.didCancel) {
+			  console.log('User cancelled image picker');
+			} else if (response.error) {
+			  console.log('ImagePicker Error: ', response.error);
+			} else if (response.customButton) {
+			  console.log('User tapped custom button: ', response.customButton);
+			} else {
+				let source = response;
+		  
+			  	// You can also display the image using data:
+				//const source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+
+			  if (pictureNumber=='image1') {
+				this.setState({
+					avatarSource: source,
+					imageOne: 'data:image/jpeg;base64,' + source.data,
+				  });
+				  //console.log(this.state.source.path)
+				console.log(this.state.imageOne)
+				
+			  }
+			}
+		  });	
+	}
+
+
+	
 
 	componentDidMount() {
 
@@ -35,7 +87,11 @@ export default class ImageUplaod extends React.Component {
 	}
 
 	onGroup5Pressed = () => {
+		console.log('first image clicked')
+		this.ImageTaker('image1');
+		//console.log('this.state.imageOne = ' + this.state.imageOne)
 
+		
 	}
 
 	onViewPressed = () => {
@@ -83,7 +139,7 @@ export default class ImageUplaod extends React.Component {
 								onPress={this.onGroup5Pressed}
 								style={styles.group5TwoButton}>
 								<Image
-									source={require("./../../assets/images/upload.png")}
+									source={{ uri: this.state.imageOne}}
 									style={styles.group5TwoButtonImage}/>
 							</TouchableOpacity>
 							<View
@@ -221,9 +277,13 @@ const styles = StyleSheet.create({
 	},
 	group5TwoButtonImage: {
 		resizeMode: "contain",
+		width: 145,
+		height: 145,
 	},
 	group5ThreeButtonImage: {
 		resizeMode: "contain",
+		width: 145,
+		height: 145,
 	},
 	group5ThreeButton: {
 		backgroundColor: "rgb(244, 244, 246)",
@@ -261,6 +321,8 @@ const styles = StyleSheet.create({
 	},
 	group5ButtonImage: {
 		resizeMode: "contain",
+		width: 145,
+		height: 145,
 	},
 	viewButton: {
 		backgroundColor: "rgb(244, 244, 246)",
@@ -282,6 +344,8 @@ const styles = StyleSheet.create({
 	},
 	viewButtonImage: {
 		resizeMode: "contain",
+		width: 145,
+		height: 145,	
 	},
 	continueButtonButtonImage: {
 		resizeMode: "contain",
