@@ -71,6 +71,36 @@ export default class ImageUplaod extends React.Component {
 				console.log(this.state.imageOne)
 				
 			  }
+			  if (pictureNumber=='image2') {
+				this.setState({
+					avatarSource: source,
+					imageTwo: 'data:image/jpeg;base64,' + source.data,
+				  });
+				  //console.log(this.state.source.path)
+				console.log(this.state.imageTwo)
+				
+			  }
+
+			  if (pictureNumber=='image3') {
+				this.setState({
+					avatarSource: source,
+					imageThree: 'data:image/jpeg;base64,' + source.data,
+				  });
+				  //console.log(this.state.source.path)
+				console.log(this.state.imageThree)
+				
+			  }
+
+			  if (pictureNumber=='image4') {
+				this.setState({
+					avatarSource: source,
+					imagefour: 'data:image/jpeg;base64,' + source.data,
+				  });
+				  //console.log(this.state.source.path)
+				console.log(this.state.imagefour)
+				
+			  }
+
 			}
 		  });	
 	}
@@ -83,7 +113,8 @@ export default class ImageUplaod extends React.Component {
 	}
 
 	onGroup5ThreePressed = () => {
-
+		console.log('third image clicked')
+		this.ImageTaker('image3');	
 	}
 
 	onGroup5Pressed = () => {
@@ -95,10 +126,13 @@ export default class ImageUplaod extends React.Component {
 	}
 
 	onViewPressed = () => {
-
+		console.log('fourth image clicked')
+		this.ImageTaker('image4');	
 	}
 
 	onGroup5TwoPressed = () => {
+		console.log('second image clicked')
+		this.ImageTaker('image2');	
 
 	}
 
@@ -150,7 +184,7 @@ export default class ImageUplaod extends React.Component {
 								onPress={this.onGroup5TwoPressed}
 								style={styles.group5ThreeButton}>
 								<Image
-									source={require("./../../assets/images/upload.png")}
+									source={{ uri: this.state.imageTwo}}
 									style={styles.group5ThreeButtonImage}/>
 							</TouchableOpacity>
 						</View>
@@ -171,7 +205,7 @@ export default class ImageUplaod extends React.Component {
 								onPress={this.onGroup5ThreePressed}
 								style={styles.group5Button}>
 								<Image
-									source={require("./../../assets/images/upload.png")}
+									source={{ uri: this.state.imageThree}}
 									style={styles.group5ButtonImage}/>
 							</TouchableOpacity>
 							<View
@@ -182,7 +216,7 @@ export default class ImageUplaod extends React.Component {
 								onPress={this.onViewPressed}
 								style={styles.viewButton}>
 								<Image
-									source={require("./../../assets/images/upload.png")}
+									source={{ uri: this.state.imagefour}}
 									style={styles.viewButtonImage}/>
 							</TouchableOpacity>
 						</View>
