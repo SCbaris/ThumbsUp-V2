@@ -1,10 +1,4 @@
-//
-//  CreationPreview
-//  ThumbsUp UI_Ux
-//
-//  Created by .
-//  Copyright © 2018 . All rights reserved.
-//
+
 
 import React from "react"
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
@@ -12,9 +6,20 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
 export default class CreationPreview extends React.Component {
 
-	static navigationOptions = ({ navigation }) => {
-
-		const { params = {} } = navigation.state
+	static navigationOptions = ({ route, navigation }) => {
+		
+		// Sending props is ez.
+		// First You need to write your props form previous page
+		// like 
+				/*navigate('CreationPreview', {
+					picOne: this.state.imageOne,
+					picTwo: this.state.imageTwo,
+					picThree: this.state.imageThree,
+					picFour: this.state.imagefour,
+				});*/
+		// And you need to call them with params. and Need to put in the navigation state.
+		// Then You can move every probs to this function's state to use
+		const { params } = this.props.navigation.state
 		return {
 				header: null,
 				headerLeft: null,
@@ -24,9 +29,22 @@ export default class CreationPreview extends React.Component {
 
 	constructor(props) {
 		super(props)
+		// IMPORTANT before use JSON.stringify will be usefull if you need text.
+		this.state = {
+			picOne : this.props.route.params.picOne,
+			picTwo : this.props.route.params.picTwo,
+			picThree :this.props.route.params.picThree,
+			picFour :this.props.route.params.picFour
+		}
 	}
 
 	componentDidMount() {
+
+		console.log('-------------------------')
+		console.log(this.state.picOne);
+		console.log(this.state.picTwo);
+		console.log(this.state.picThree);
+		console.log(JSON.stringify(this.state.picFour));
 
 	}
 
@@ -157,8 +175,8 @@ export default class CreationPreview extends React.Component {
 										</View>
 										<Text
 											style={styles.postText}>This looks great! Check out the amazing job the team
-at Tile and Flooring Emporium were able to do for
-us. We are more than satisfied with our results!</Text>
+																	at Tile and Flooring Emporium were able to do for
+																	us. We are more than satisfied with our results!</Text>
 									</View>
 									<Image
 										source={require("./../../assets/images/ellipse-3.png")}
@@ -288,7 +306,7 @@ us. We are more than satisfied with our results!</Text>
 										</View>
 									</View>
 									<Image
-										source={require("./../../assets/images/group-5.png")}
+										source={{ uri: this.state.picOne}}
 										style={styles.rectangleTwoImage}/>
 								</View>
 							</View>

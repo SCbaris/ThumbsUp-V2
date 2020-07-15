@@ -1,11 +1,13 @@
 
 import React from "react"
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { Image, StyleSheet, Text, TouchableOpacity,TouchableHighlight, View } from "react-native"
 import ImagePicker from 'react-native-image-picker';
+import uploadImage from './../../assets/images/upload.png'
+
+const uploadImageUri = Image.resolveAssetSource(uploadImage).uri
 
 const options = {
 	title: 'Select Picture',
-	customButtons: [{ name: 'fb', title: 'Choose Photo from Gallery' }],
 	storageOptions: {
 	  skipBackup: true,
 	  path: 'images',
@@ -37,10 +39,10 @@ export default class ImageUplaod extends React.Component {
 		super(props)
 		this.state = {
 			avatarSource :{},
-			imageOne : "./../../assets/images/upload.png",
-			imageTwo :"./../../assets/images/upload.png",
-			imageThree :"./../../assets/images/upload.png",
-			imagefour :"./../../assets/images/upload.png"
+			imageOne : uploadImageUri,
+			imageTwo : uploadImageUri,
+			imageThree :uploadImageUri,
+			imagefour :uploadImageUri
 
 		}
 	}
@@ -109,7 +111,7 @@ export default class ImageUplaod extends React.Component {
 	
 
 	componentDidMount() {
-
+		console.log(this.state.imageOne)
 	}
 
 	onGroup5ThreePressed = () => {
@@ -138,9 +140,16 @@ export default class ImageUplaod extends React.Component {
 
 	onContinueButtonPressed = () => {
 
+
 		const { navigate } = this.props.navigation
 
-		navigate("CreationPreview")
+		navigate('CreationPreview', {
+			picOne: this.state.imageOne,
+			picTwo: this.state.imageTwo,
+			picThree: this.state.imageThree,
+			picFour: this.state.imagefour,
+		});
+
 	}
 
 	render() {
@@ -169,24 +178,24 @@ export default class ImageUplaod extends React.Component {
 								flexDirection: "row",
 								alignItems: "flex-start",
 							}}>
-							<TouchableOpacity
+							<TouchableHighlight
 								onPress={this.onGroup5Pressed}
 								style={styles.group5TwoButton}>
 								<Image
 									source={{ uri: this.state.imageOne}}
 									style={styles.group5TwoButtonImage}/>
-							</TouchableOpacity>
+							</TouchableHighlight>
 							<View
 								style={{
 									flex: 1,
 								}}/>
-							<TouchableOpacity
+							<TouchableHighlight
 								onPress={this.onGroup5TwoPressed}
 								style={styles.group5ThreeButton}>
 								<Image
 									source={{ uri: this.state.imageTwo}}
 									style={styles.group5ThreeButtonImage}/>
-							</TouchableOpacity>
+							</TouchableHighlight>
 						</View>
 						<View
 							style={{
@@ -201,24 +210,24 @@ export default class ImageUplaod extends React.Component {
 								flexDirection: "row",
 								alignItems: "flex-end",
 							}}>
-							<TouchableOpacity
+							<TouchableHighlight
 								onPress={this.onGroup5ThreePressed}
 								style={styles.group5Button}>
 								<Image
 									source={{ uri: this.state.imageThree}}
 									style={styles.group5ButtonImage}/>
-							</TouchableOpacity>
+							</TouchableHighlight>
 							<View
 								style={{
 									flex: 1,
 								}}/>
-							<TouchableOpacity
+							<TouchableHighlight
 								onPress={this.onViewPressed}
 								style={styles.viewButton}>
 								<Image
 									source={{ uri: this.state.imagefour}}
 									style={styles.viewButtonImage}/>
-							</TouchableOpacity>
+							</TouchableHighlight>
 						</View>
 					</View>
 				</View>
@@ -407,3 +416,4 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 	},
 })
+
