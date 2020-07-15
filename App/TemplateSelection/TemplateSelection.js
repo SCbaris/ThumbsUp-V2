@@ -29,25 +29,32 @@ export default class TemplateSelection extends React.Component {
 
 	onContinueButtonPressed = () => {
 
-		const { navigate } = this.props.navigation
-
-		navigate("ImageUplaod")
 	}
 
-	onTemplate3Pressed = () => {
+
+
+	onTemplate1Pressed = () => {
 		const { navigate } = this.props.navigation
-		navigate("ImageUplaod")
+		navigate('ImageUplaod', {
+			templateText: 'TEST 1 , Thank You!',
+		});	
 	}
 
 	onTemplate2Pressed = () => {
 		const { navigate } = this.props.navigation
-		navigate("ImageUplaod")
+		navigate('ImageUplaod', {
+			templateText: 'TEST 2 , Amazing Job!',
+		});
 	}
 
-	onTemplate1Pressed = () => {
+
+	onTemplate3Pressed = () => {
 		const { navigate } = this.props.navigation
-  		navigate("ImageUplaod")
+		navigate('ImageUplaod', {
+			templateText: 'TEST 3 , Fast And Quick!',
+		});			
 	}
+
 
 	render() {
 

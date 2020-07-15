@@ -17,6 +17,7 @@ export default class CreationPreview extends React.Component {
 					picThree: this.state.imageThree,
 					picFour: this.state.imagefour,
 				});*/
+				//PS. Look previous page (ImageUpload)
 		// And you need to call them with params. and Need to put in the navigation state.
 		// Then You can move every probs to this function's state to use
 		const { params } = this.props.navigation.state
@@ -31,6 +32,7 @@ export default class CreationPreview extends React.Component {
 		super(props)
 		// IMPORTANT before use JSON.stringify will be usefull if you need text.
 		this.state = {
+			templateText : this.props.route.params.templateText,
 			picOne : this.props.route.params.picOne,
 			picTwo : this.props.route.params.picTwo,
 			picThree :this.props.route.params.picThree,
@@ -52,7 +54,13 @@ export default class CreationPreview extends React.Component {
 
 		const { navigate } = this.props.navigation
 
-		navigate("SendPost")
+		// With this way we can send pictures from our 
+		navigate('SendPost', {
+			picOne: this.state.picOne,
+			picTwo: this.state.picTwo,
+			picThree: this.state.picThree,
+			picFour: this.state.picFour,
+		});
 	}
 
 	render() {
@@ -174,9 +182,7 @@ export default class CreationPreview extends React.Component {
 												style={styles.iconsIcMoreImage}/>
 										</View>
 										<Text
-											style={styles.postText}>This looks great! Check out the amazing job the team
-																	at Tile and Flooring Emporium were able to do for
-																	us. We are more than satisfied with our results!</Text>
+											style={styles.postText}> {this.state.templateText}  </Text>
 									</View>
 									<Image
 										source={require("./../../assets/images/ellipse-3.png")}

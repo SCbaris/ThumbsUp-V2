@@ -20,9 +20,6 @@ const options = {
    */
 
 
-
-
-
 export default class ImageUplaod extends React.Component {
 
 	static navigationOptions = ({ navigation }) => {
@@ -39,6 +36,9 @@ export default class ImageUplaod extends React.Component {
 		super(props)
 		this.state = {
 			avatarSource :{},
+			//This part come from template selection.
+			//Client choose template and this template will be shown on the preview page.
+			templateText : this.props.route.params.templateText,
 			imageOne : uploadImageUri,
 			imageTwo : uploadImageUri,
 			imageThree :uploadImageUri,
@@ -144,6 +144,8 @@ export default class ImageUplaod extends React.Component {
 		const { navigate } = this.props.navigation
 
 		navigate('CreationPreview', {
+			//Sending template text and pictures to Preview page.
+			templateText : this.state.templateText,
 			picOne: this.state.imageOne,
 			picTwo: this.state.imageTwo,
 			picThree: this.state.imageThree,
