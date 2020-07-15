@@ -56,6 +56,7 @@ export default class CreationPreview extends React.Component {
 
 		// With this way we can send pictures from our 
 		navigate('SendPost', {
+			templateText:this.state.templateText,
 			picOne: this.state.picOne,
 			picTwo: this.state.picTwo,
 			picThree: this.state.picThree,

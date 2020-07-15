@@ -1,20 +1,57 @@
-//
-//  SendPost
-//  ThumbsUp UI_Ux
-//
-//  Created by [Author].
-//  Copyright © 2018 [Company]. All rights reserved.
-//
-
 import React from "react"
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View,TouchableHighlight  } from "react-native"
+import {LoginButton, ShareDialog} from 'react-native-fbsdk';
 
-
+const FBLoginButton = require('../../Component/FBLoginButton');
 export default class SendPost extends React.Component {
+
+	/*static FBshareButton = () => {
+
+		const [shareLinkContent , setShareLinkContent ] = useState({
+			// Content Type can be video or picture
+			// Picture will work for
+			contentType: 'picture',
+			// We can change it with service providers website
+			photos: [{ 
+				imageUrl1: this.state.picOne, 
+				imageUrl2: this.state.picTwo, 
+				imageUrl3: this.state.picThree, 
+				imageUrl4: this.state.picFour, 
+			}],
+			contentUrl: 'https://www.neowarestudios.com/',
+			contentDescription: 'This Job is perfect!',
+		  });
+	
+		  return sharePictureWithShareDialog = () => {
+			var tmp = this;
+			ShareDialog.canShow(sharePhotoContent)
+			  .then((canShow) => {
+				if (canShow) {
+				  return ShareDialog.show(sharePhotoContent);
+				}
+			  })
+			  .then(
+				(result) => {
+				  if (result.isCancelled) {
+					alert('Share cancelled');
+				  } else {
+					//We will change it to Thank you or something like this.
+					alert('Share success with postId: ' + result.postId);
+				  }
+				},
+				function (error) {
+				  alert('Share fail with error: ' + error);
+				},
+			  );
+		  };
+		}*/
+
+
+	
 
 	static navigationOptions = ({ navigation }) => {
 
-		const { params = {} } = navigation.state
+		const { params } = this.props.navigation.state
 		return {
 				header: null,
 				headerLeft: null,
@@ -24,7 +61,48 @@ export default class SendPost extends React.Component {
 
 	constructor(props) {
 		super(props)
+		/*const FBSDK = require('react-native-fbsdk');
+		const {
+			ShareApi,
+		  } = FBSDK;
+		const sharePhotoContent = {
+			contentType: 'photo',
+			photos: [{ imageUrl: this.props.route.params.picOne, }],
+		  };*/
+	  
+		this.state = {
+			//sharePhotoContent: sharePhotoContent,
+			templateText : this.props.route.params.templateText,
+			picOne : this.props.route.params.picOne,
+			picTwo : this.props.route.params.picTwo,
+			picThree :this.props.route.params.picThree,
+			picFour :this.props.route.params.picFour
+		}
 	}
+
+	shareLinkWithShareDialog() {
+		var tmp = this;
+		ShareDialog.canShow(this.state.sharePhotoContent).then(
+		  function(canShow) {
+			if (canShow) {
+			  return ShareDialog.show(tmp.state.sharePhotoContent);
+			}
+		  }
+		).then(
+		  function(result) {
+			if (result.isCancelled) {
+			  alert('Share cancelled');
+			} else {
+			  alert('Share success with postId: ' + result.postId);
+			}
+		  },
+		  function(error) {
+			alert('Share fail with error: ' + error);
+		  }
+		);
+	  }
+	
+
 
 	componentDidMount() {
 
@@ -33,7 +111,6 @@ export default class SendPost extends React.Component {
 	onContinueButtonPressed = () => {
 
 		const { navigate } = this.props.navigation
-
 		navigate("UserThankYou")
 	}
 
@@ -59,12 +136,13 @@ export default class SendPost extends React.Component {
 					style={{
 						flex: 1,
 					}}/>
-				<TouchableOpacity
-					onPress={this.onContinueButtonPressed}
+				<TouchableHighlight 
+					onPress={this.onContinueButtonPressed()}
 					style={styles.continueButtonButton}>
-					<Text
-						style={styles.continueButtonButtonText}>Send</Text>
-				</TouchableOpacity>
+					<FBLoginButton/>
+					
+				</TouchableHighlight >
+				
 			</View>
 	}
 }
