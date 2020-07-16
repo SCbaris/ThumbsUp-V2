@@ -139,7 +139,9 @@ export default class SendPost extends React.Component {
 				<TouchableHighlight 
 					onPress={this.onContinueButtonPressed()}
 					style={styles.continueButtonButton}>
-					<FBLoginButton/>
+					<FBLoginButton
+					pic1 = {this.state.picOne}
+					/>
 					
 				</TouchableHighlight >
 				
