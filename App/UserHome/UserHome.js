@@ -123,6 +123,11 @@ export default class UserHome extends React.Component {
 									style={styles.seperatorImage}/>
 							</View>
 						</View>
+
+
+
+
+						
 						<View
 							style={styles.previewComponentBuTwoView}>
 							<View

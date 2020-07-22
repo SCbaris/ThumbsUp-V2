@@ -29,7 +29,9 @@ export default class UserSignupCompletion extends React.Component {
 
 	onContinueButtonPressed = () => {
 		const { navigate } = this.props.navigation
-		navigate("UserHome")
+		//navigate("UserHome")
+		navigate("UserHomeTest")
+
 
 	}
 

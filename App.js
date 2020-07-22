@@ -15,7 +15,7 @@ import UserSignupCompletion from "./App/UserSignupCompletion/UserSignupCompletio
 import UserHome from "./App/UserHome/UserHome"
 import UserThankYou from "./App/UserThankYou/UserThankYou"
 
-
+import UserCreationPreview from "./App/UserCreationPreview/UserCreationPreview"
 //Company Part---------
 import CompanySignupCompletion from "./App/CompanySignupCompletion/CompanySignupCompletion"
 import CardInformation from "./App/CardInformation/CardInformation"
@@ -28,6 +28,10 @@ import SendPost from "./App/SendPost/SendPost"
 
 //Compary And User---------
 import CreationPreview from "./App/CreationPreview/CreationPreview"
+
+//TEST Pages
+import UserHomeTest from "./App/UserHome/UserHomeTest"
+import TaskBox from "./Component/TaskBox"
 
 const Stack = createStackNavigator();
 
@@ -104,7 +108,19 @@ App = () => {
     />
     <Stack.Screen 
       name="UserThankYou" 
-      component={UserThankYou} 
+      component={UserThankYou}
+    />
+    <Stack.Screen 
+      name="UserHomeTest" 
+      component={UserHomeTest} 
+    />
+    <Stack.Screen 
+      name="UserCreationPreview" 
+      component={UserCreationPreview} 
+    />
+    <Stack.Screen 
+      name="TaskBox" 
+      component={TaskBox} 
     />
 
 
